@@ -1,0 +1,95 @@
+keypads:
+  - keypadtype: serial
+    config:
+      port: /dev/serial/by-path/pci-0000:00:14.0-usb-0:4.4.1.1.4:1.0-port0
+      # on Windows you may use
+      # port: "COM9"
+      baudrate: 9600
+targets:
+  - targettype: obs
+    config:
+      host: localhost
+      port: 4444
+      # configure your password kehre
+      password: myobspasswordmustbehere!
+keybindings:
+  - name: recording
+    bindings:
+      - keys:
+          - serial.1
+        commands:
+          - command: obs.activateScene
+            parameters:
+              - "screen + speaker"
+      - keys:
+          - serial.2
+        commands:
+          - command: obs.activateScene
+            parameters:
+              - "screen + HDMI"
+      - keys:
+          - serial.A
+        commands:
+          - command: obs.prevScene
+      - keys:
+          - serial.B
+        commands:
+          - command: obs.nextScene
+      - keys:
+          - serial.C
+        commands:
+          - command: obs.prevSceneCollection
+      - keys:
+          - serial.D
+        commands:
+          - command: obs.nextSceneCollection
+      - keys:
+          - serial.*
+        commands:
+          - command: obs.toggleRecording
+      - keys:
+          - serial.#
+        commands:
+          - command: obs.togglePauseRecording
+      - keys:
+          - serial.0
+        commands:
+          - command: bindings.next
+  - name: streaming
+    bindings:
+      - keys:
+          - serial.1
+        commands:
+          - command: obs.activateScene
+            parameters:
+              - "screen + speaker"
+      - keys:
+          - serial.2
+        commands:
+          - command: obs.activateScene
+            parameters:
+              - "screen + HDMI"
+      - keys:
+          - serial.A
+        commands:
+          - command: obs.prevScene
+      - keys:
+          - serial.B
+        commands:
+          - command: obs.nextScene
+      - keys:
+          - serial.C
+        commands:
+          - command: obs.prevSceneCollection
+      - keys:
+          - serial.D
+        commands:
+          - command: obs.nextSceneCollection
+      - keys:
+          - serial.*
+        commands:
+          - command: obs.toggleStreaming
+      - keys:
+          - serial.0
+        commands:
+          - command: bindings.next
