@@ -2,7 +2,7 @@ module keypad
 
 go 1.15
 
-replace github.com/christopher-dG/go-obs-websocket => /home/valter/Work/go/go-obs-websocket
+replace github.com/christopher-dG/go-obs-websocket => ../go-obs-websocket
 
 require (
 	github.com/christopher-dG/go-obs-websocket v0.0.0-20200720193653-c4fed10356a5
