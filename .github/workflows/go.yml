@@ -19,9 +19,7 @@ jobs:
         go-version: 1.15
 
     - name: Build
-      run: |
-        cd go
-        go build -v ./...
-        cd -
+      working-directory: go
+      run: go build -v ./...
       
 
