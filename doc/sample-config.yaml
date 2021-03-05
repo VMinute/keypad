@@ -10,8 +10,10 @@ targets:
     config:
       host: localhost
       port: 4444
-      # configure your password kehre
+      # configure your password here
       password: myobspasswordmustbehere!
+  - targettype: keyboard
+    config:
 keybindings:
   - name: recording
     bindings:
@@ -55,6 +57,19 @@ keybindings:
           - serial.0
         commands:
           - command: bindings.next
+      - keys:
+          - serial.7
+        commands:
+          - command: keyboard.keypress
+            parameters:
+              - space
+      - keys:
+          - serial.8
+        commands:
+          - command: keyboard.keypress
+            parameters:
+              - B
+              - shift
   - name: streaming
     bindings:
       - keys:

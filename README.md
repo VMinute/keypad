@@ -5,7 +5,7 @@
 This is a small tool I made for my personal use.  
 I decided to share it because I think it may be useful for others, feel free to use it and change it, respecing the [GPLv3 license](LICENSE).
 
-Currently this works with a keypad built using an [Arduino Nano](https://www.arduino.cc/en/pmwiki.php?n=Main/ArduinoBoardNano) (the one pictured above) and can be used to send commands to [Open Broadcaster Software](https://obsproject.com/) using the [OBS websocket plugin](https://github.com/Palakis/obs-websocket), but the code is designed to be extensible and support other kinds of keypads and potentially other controlled applications.
+Currently this works with a keypad built using an [Arduino Nano](https://www.arduino.cc/en/pmwiki.php?n=Main/ArduinoBoardNano) (the one pictured above) and can be used to send commands to [Open Broadcaster Software](https://obsproject.com/) using the [OBS websocket plugin](https://github.com/Palakis/obs-websocket) and generic keystrokes to whatever application happens to have keyboard focus, but the code is designed to be extensible and support other kinds of keypads and potentially other controlled applications.
 
 Code for the application, Arduino device and design for a 3d printable enclosure are provided under the [GPLv3 license](LICENSE).
 

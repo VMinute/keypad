@@ -36,7 +36,7 @@ type obsCommandTargetConfig struct {
 	Password string
 }
 
-var commands = map[string]CommandDefinition{
+var obsCommands = map[string]CommandDefinition{
 	"activatescene": {
 		CheckFunc:   activateSceneCheck,
 		ExecuteFunc: activateSceneExec},
@@ -258,7 +258,7 @@ func (obs *obsCommandTarget) Init(configyaml []byte) error {
 
 	obs.commandsMap = new(Map)
 
-	obs.commandsMap.Init(obs, commands)
+	obs.commandsMap.Init(obs, obsCommands)
 
 	obs.client.Host = cfg.Host
 	obs.client.Port = int(cfg.Port)
