@@ -16,6 +16,8 @@ func CreateCommand(targettype string) (CommandTarget, error) {
 	switch targettype {
 	case "obs":
 		return new(obsCommandTarget), nil
+	case "keyboard":
+		return new(keybdCommandTarget), nil
 	}
 	return nil, fmt.Errorf("%v is not a valid command-target type", targettype)
 }

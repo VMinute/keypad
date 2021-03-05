@@ -112,18 +112,46 @@ Parameters as passed as an array.
 | **startStreaming**          | none          | Starts streaming                                                                                                               |
 | **stopStreaming**           | none          | Stops streaming                                                                                                                |
 | **toggleStreaming**         | none          | Start/Stop streaming, depending on current state                                                                               |
- 
-### Bindings
 
-This target does not need to be defined, it's always available and can be used to "remap" the keypad, activating a different set of bindings.
+### Keyboard
+
+This target can be used to emulate keystrokes, this will let you control application that don't provide an API interface. For example you can map the keystrokes required to move to the next slide in your presentation software.
+
+#### Configuration
+
+currently no configuration is required for the keyboard
 
 #### Commands
 
-| Command       | Parameters    | Description                                                                                         |
-|---------------|---------------|-----------------------------------------------------------------------------------------------------|
-| **activate**  | name (string) | activate a specific set of key bindings.                                                            |
-| **prevScene** | none          | Moves to the previous set of key bindings (in the order they are defined in the configuration file) |
-| **nextScene** | none          | Moves to the next set of key bindings (in the order they are defined in the configuration file)     |
+| Command      | Parameters                       | Description                                                                                                                                                                                                    |
+|--------------|----------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **keypress** | keys (string or array of string) | emulates a specific keypress. First parameter is the main key (see following table for a list) and it can be followed by one or more of the modifiers: ctrl, alt, shift, right-ctrl, right-shift, altgr, super |
+
+Supported keys:
+
+| Key                   | Description                                                                        |
+|-----------------------|------------------------------------------------------------------------------------|
+| 0..9                  | Numeric key                                                                        |
+| A..Z                  | Letter key (to actually input a capital letter you have to add the shift modifier) |
+| space                 | space                                                                              |
+| backspace             | backspace                                                                          |
+| up, down, left, right | arrow keys                                                                         |
+| F1..F12               | Function keys                                                                      |
+| enter                 | Enter, Return                                                                      |
+| esc                   | Escape                                                                             |
+
+### Bindings
+
+This target does not need to be defined, it's always available and can be used to "remap" the keypad, activating a different set of bindings.  
+It can be used to remap the keypad dynamically and can be used to support different "modes" in the same configuration (ex: recording and streaming).
+
+#### Commands
+
+| Command      | Parameters    | Description                                                                                         |
+|--------------|---------------|-----------------------------------------------------------------------------------------------------|
+| **activate** | name (string) | activate a specific set of key bindings.                                                            |
+| **prev**     | none          | Moves to the previous set of key bindings (in the order they are defined in the configuration file) |
+| **next**     | none          | Moves to the next set of key bindings (in the order they are defined in the configuration file)     |
 
 ## Key Bindings
 
@@ -192,6 +220,19 @@ keybindings:
           - serial.0
         commands:
           - command: bindings.next
+      - keys:
+          - serial.7
+        commands:
+          - command: keyboard.keypress
+            parameters:
+              - space
+      - keys:
+          - serial.8
+        commands:
+          - command: keyboard.keypress
+            parameters:
+              - B
+              - shift
   - name: streaming
     bindings:
           - serial.1
