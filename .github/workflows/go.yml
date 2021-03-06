@@ -7,9 +7,15 @@ on:
     branches: [ main, add-github-actions ]
 
 jobs:
-
-  build_linux:
+  
+  build:
+  
     runs-on: ubuntu-latest
+    
+    strategy:
+      matrix:
+        os: [ ubuntu-latest, windows-latest]
+    
     steps:
     - uses: actions/checkout@v2
 
@@ -29,24 +35,3 @@ jobs:
       working-directory: go
       run: go build -v ./...
       
-  build_windows:
-    runs-on: windows-latest
-    steps:
-    - uses: actions/checkout@v2
-
-    - name: Set up Go
-      uses: actions/setup-go@v2
-      with:
-        go-version: 1.15
-
-    - name: Clone go-obs-websocket
-      run: git clone --branch fix-scene-collections https://github.com/VMinute/go-obs-websocket.git
-
-    - name: Build go-obs-websocket
-      working-directory: go-obs-websocket
-      run: go build -v ./...
-
-    - name: Build
-      working-directory: go
-      run: go build -v ./...
-
