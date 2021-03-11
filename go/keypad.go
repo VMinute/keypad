@@ -4,10 +4,11 @@ import (
 	"flag"
 	"keypad/controller"
 	"log"
+    "os"
 )
 
 func main() {
-	var configname = "~/.keypad.yaml"
+	var configname = os.Getenv("HOME") + "/.keypad.yaml"
 
 	flag.Parse()
 
